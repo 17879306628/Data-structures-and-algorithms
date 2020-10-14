@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let isVaild = function (s) {
+      if(s.length % 2 !=0) {
+        return false;
+      } 
+      let stack = [];
+      let temp = '';
+      for(let i = 0; i < s.length;i++) {
+        temp = s[i];
+        switch(temp) {
+          case '(':
+            stack.push(temp);
+            break;
+          case '[':
+            stack.push(temp);
+            break;
+          case '{':
+            stack.push(temp);
+            break;
+          case ')': 
+            if(stack.pop() == '(') {
+              break;
+            }
+            return false;
+          case ']': 
+            if(stack.pop() == '[') {
+              break;
+            }
+            return false;
+            case '}': 
+            if(stack.pop() == '{') {
+              break;
+            }
+            return false;
+        }
+      }
+      return !stack.length
+    }
+    console.log(isVaild('({[]})'));
+    console.log(isVaild('({[])'));
+    console.log(isVaild('({[]])'));
+  </script>
+</body>
+</html>

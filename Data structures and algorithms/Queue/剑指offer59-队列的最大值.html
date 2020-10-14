@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var MaxQueue = function() {
+      var Queue = [];
+      var maxQueue = [];
+      
+      MaxQueue.prototype.max_value = function() {
+        return maxQueue.length == 0 ? -1 : maxQueue[0];
+      };
+
+
+      MaxQueue.prototype.push_back = function(value) {
+          Queue.push(value);
+          while(maxQueue.length > 0 &&  maxQueue[maxQueue.length - 1] < value) {
+              maxQueue.pop();
+          }
+          
+          maxQueue.push(value);
+      };
+
+      MaxQueue.prototype.pop_front = function() {
+          if(Queue.length == 0) {
+              return -1;
+          } else {
+              var num = Queue.shift();
+              if(num == maxQueue[0]) {
+                  maxQueue.shift();
+                  
+              }
+              return num;
+          }
+      };
+    };
+    
+  </script>
+</body>
+</html>
